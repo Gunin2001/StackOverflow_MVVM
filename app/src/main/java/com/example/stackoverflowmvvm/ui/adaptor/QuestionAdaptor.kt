@@ -12,17 +12,7 @@ import kotlinx.android.synthetic.main.question_layout.view.*
 class QuestionAdaptor(val questions: ArrayList<Questions>) :
     RecyclerView.Adapter<QuestionAdaptor.AdapterViewHolder>() {
 
-    fun addQuestions(newQuestions: List<Questions>) {
-        val currentLength = questions.size
-        questions.addAll(newQuestions)
-        notifyItemInserted(currentLength)
-    }
-
-    fun clearQuestions() {
-        questions.clear()
-        notifyDataSetChanged()
-    }
-
+    var onItemclick:((login : String) -> Unit)? = null
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
         AdapterViewHolder(
             LayoutInflater.from(parent.context).inflate(R.layout.question_layout, parent, false)
